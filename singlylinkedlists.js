@@ -1,16 +1,9 @@
-/*function ListNode(value){
-    this.val = value;
-    this.next = null;
-}
-Fronts
+/*Fronts
 Add Front
 Rudy isn’t nice: he cuts in line in front of everyone else. Given a pointer to the first ListNode and a value, create a new node, assign it to the list head, and return a pointer to the new head node.*/
 
-
 // Remove Front
 // Ha! Rudy is getting what he deserves – kicked out of line. Given a pointer to the first node in a list, remove the head node and return the new list head node. If the list is empty, return null.
-
-
 
 // Front
 // Finally, Tad and Sam reach the front of the line to get movie tickets. Oh no – only one seat remains! Who was earlier in line: Tad or Sam? Return the value (not the node) at the head of the list. If the list is empty, return null.
@@ -19,6 +12,18 @@ Rudy isn’t nice: he cuts in line in front of everyone else. Given a pointer to
 
 // Length
 // July 20, 2013: about 5000 people wait in line for a chance to audition for American Idol. Create a function that accepts a pointer to the first list node, and returns number of nodes in that SList.
+
+// Display (print)
+// Create display(node) for debugging that returns a string containing all list values. Build what you wish console.log(myList) did!
+
+// SList: Max
+// American Idol seems to air singers that are the best, and a few that seem like the worst! Create function max(node) to return list’s largest val.
+
+// SList: Min
+// Create min(node) to return list’s smallest val. 
+
+// SList: Average
+// Create average(node) to return average val.
 
 class Node {
     constructor(value) {
@@ -104,17 +109,51 @@ class List {
     }
 
     length() {
-        console.log("Beginning to count the list");
         let current = this.head;
         let lengthIs = 0;
         while (current) {
+            lengthIs = lengthIs + 1;
             current = current.next;
-            lengthIs++;
         }
-        
-        console.log(lengthIs);
-        console.log("finished counting the list");
         return lengthIs;
+    }
+
+    max() {
+        let current = this.head;
+        let temp = current.value;
+        while (current) {
+            if(current.value > temp) {
+                temp = current.value;
+            }
+        current = current.next;
+        }
+        return temp;
+    }
+
+    min() {
+        let current = this.head;
+        let temp = current.value;
+        while (current) {
+            if(current.value < temp) {
+                temp = current.value;
+            }
+        current = current.next;
+        }
+        return temp;
+    }
+
+    avg() {
+        let current = this.head;
+        let sumAll = 0;
+        let countAll = 0;
+        while (current) {
+            sumAll = sumAll + current.value;
+            countAll = countAll + 1;
+            current = current.next;
+        }
+        console.log(sumAll, countAll);
+        let avgIs = sumAll/countAll;
+        return avgIs;
     }
 }
 
@@ -137,5 +176,8 @@ list.print();
 
 console.log(list.front(9,11));
 console.log(list.length());
+console.log(list.max());
+console.log(list.min());
+console.log(list.avg());
 
 
